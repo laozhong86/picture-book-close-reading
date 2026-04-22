@@ -6,7 +6,7 @@
   "properties": {
     "nickname": {
       "type": ["string", "null"],
-      "description": "孩子的昵称或小名，用于 A4 输出的"适配：<昵称>"。"
+      "description": "孩子的昵称或小名，用于 A4 输出右上角的『适配：<昵称>·<年龄>』。"
     },
     "age": {
       "type": "object",
@@ -29,7 +29,7 @@
     "obsessions": {
       "type": "array",
       "items": { "type": "string" },
-      "description": "孩子目前痴迷的主题清单，用于"联结层"提问的弹药库。例：恐龙、太空、公主、昆虫。"
+      "description": "孩子目前痴迷的主题清单，用于联结层提问的弹药库。例：恐龙、太空、公主、昆虫。"
     },
     "personality": {
       "type": "array",
@@ -52,16 +52,8 @@
       },
       "description": "父母最想通过共读培养的能力，可多选。影响 A4 版块权重。"
     },
-    "created_at": {
-      "type": "string",
-      "format": "date",
-      "description": "档案创建日期 YYYY-MM-DD。"
-    },
-    "updated_at": {
-      "type": "string",
-      "format": "date",
-      "description": "最近一次更新日期。"
-    },
+    "created_at": { "type": "string", "format": "date", "description": "档案创建日期 YYYY-MM-DD。" },
+    "updated_at": { "type": "string", "format": "date", "description": "最近一次更新日期。" },
     "history": {
       "type": "array",
       "description": "读过的绘本记录（可选）。每次生成 A4 时追加一条。",
@@ -70,7 +62,8 @@
         "properties": {
           "title": { "type": "string" },
           "date": { "type": "string", "format": "date" },
-          "a4_path": { "type": "string" }
+          "a4_path": { "type": "string", "description": "生成的 A4 HTML 绝对路径" },
+          "pdf_path": { "type": ["string", "null"], "description": "自动渲染的 PDF 绝对路径；Chrome 不可用时为 null" }
         }
       }
     }
