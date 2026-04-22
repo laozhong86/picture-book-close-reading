@@ -1,0 +1,79 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ChildProfile",
+  "description": "绘本精读 skill 的孩子阅读档案。首次建立后持久化，跨会话复用。缺失字段保留 null，不要凭空补全。",
+  "type": "object",
+  "properties": {
+    "nickname": {
+      "type": ["string", "null"],
+      "description": "孩子的昵称或小名，用于 A4 输出的"适配：<昵称>"。"
+    },
+    "age": {
+      "type": "object",
+      "description": "0–3 岁用月龄，3 岁以上用岁数。两者二选一即可。",
+      "properties": {
+        "months": { "type": ["integer", "null"], "minimum": 0, "maximum": 48 },
+        "years": { "type": ["number", "null"], "minimum": 0, "maximum": 18 }
+      }
+    },
+    "language_environment": {
+      "type": ["string", "null"],
+      "enum": ["中文", "双语", "其他", null],
+      "description": "孩子的主要语言环境。"
+    },
+    "reading_stage": {
+      "type": ["string", "null"],
+      "enum": ["first_time", "occasional", "daily", "independent_reader", null],
+      "description": "first_time=第一次接触绘本；occasional=偶尔读；daily=每天读；independent_reader=已独立识字。"
+    },
+    "obsessions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "孩子目前痴迷的主题清单，用于"联结层"提问的弹药库。例：恐龙、太空、公主、昆虫。"
+    },
+    "personality": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["害羞", "外向", "敏感", "好动", "爱提问", "话少", "完美主义", "慢热", "其他"]
+      },
+      "description": "性格关键词，可多选。影响提问风格选择。"
+    },
+    "avoid_topics": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "需要回避的话题。例：死亡、分离、打针、特定恐惧。"
+    },
+    "parent_goals": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["词汇量", "情绪认知", "想象力", "专注力", "亲子连接", "其他"]
+      },
+      "description": "父母最想通过共读培养的能力，可多选。影响 A4 版块权重。"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date",
+      "description": "档案创建日期 YYYY-MM-DD。"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date",
+      "description": "最近一次更新日期。"
+    },
+    "history": {
+      "type": "array",
+      "description": "读过的绘本记录（可选）。每次生成 A4 时追加一条。",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "date": { "type": "string", "format": "date" },
+          "a4_path": { "type": "string" }
+        }
+      }
+    }
+  },
+  "required": ["nickname", "age", "created_at"]
+}

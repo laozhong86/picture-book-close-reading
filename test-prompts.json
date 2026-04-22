@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "prompt": "帮我精读《猜猜我有多爱你》",
+    "expected": "（已有档案）直接走阶段 2→3，产出 A4 HTML；若档案不存在则先建档。",
+    "scenario": "happy_path"
+  },
+  {
+    "id": 2,
+    "prompt": "《晚安月亮》这本书怎么跟我家孩子读",
+    "expected": "触发 skill；书名重名搜索应列出候选（经典版 vs 其他译本），父母确认后再生成指引",
+    "scenario": "disambiguation"
+  },
+  {
+    "id": 3,
+    "prompt": "（父母上传一张封面照片，无文字说明）",
+    "expected": "识别书名作者→搜索补充→生成 A4；若无法识别则基于图像本身做精读并告知父母未做检索",
+    "scenario": "photo_input_fallback"
+  }
+]

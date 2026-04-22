@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>{{BOOK_TITLE}} · 精读指引</title>
+<style>
+  @page { size: A4; margin: 12mm; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "PingFang SC", "Noto Sans SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    color: #1a1a1a;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body {
+    width: 186mm;
+    min-height: 273mm;
+    padding: 0;
+    margin: 0 auto;
+    font-size: 10.5pt;
+    line-height: 1.55;
+  }
+  .page {
+    padding: 4mm 2mm;
+  }
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1.5pt solid #1a1a1a;
+    padding-bottom: 3mm;
+    margin-bottom: 4mm;
+  }
+  .title-group .title {
+    font-size: 17pt;
+    font-weight: 700;
+    letter-spacing: 0.5pt;
+    line-height: 1.2;
+  }
+  .title-group .meta {
+    font-size: 9pt;
+    color: #555;
+    margin-top: 1mm;
+  }
+  .adapt {
+    font-size: 9pt;
+    color: #444;
+    background: #f3efe6;
+    padding: 1.5mm 3mm;
+    border-radius: 2mm;
+    white-space: nowrap;
+  }
+  section {
+    margin-bottom: 3.5mm;
+    break-inside: avoid;
+  }
+  h2 {
+    font-size: 11pt;
+    font-weight: 700;
+    margin: 0 0 1.5mm 0;
+    color: #b8591a;
+    letter-spacing: 0.3pt;
+  }
+  p { margin: 0 0 1mm 0; }
+  ol, ul { margin: 0; padding-left: 5mm; }
+  ol li, ul li { margin-bottom: 0.8mm; }
+  .three-read > div {
+    margin-bottom: 1.2mm;
+    padding-left: 3mm;
+    border-left: 2pt solid #e8d9b8;
+  }
+  .three-read .label {
+    font-weight: 600;
+    color: #7a4a15;
+    margin-right: 2mm;
+  }
+  .q-list li {
+    padding-left: 1mm;
+  }
+  .q-list .lvl {
+    display: inline-block;
+    font-size: 8.5pt;
+    color: #888;
+    margin-right: 2mm;
+    min-width: 11mm;
+  }
+  .warn {
+    background: #fdf4f0;
+    padding: 2mm 3mm;
+    border-left: 2pt solid #c75d3b;
+    font-size: 9.8pt;
+  }
+  .warn ul { padding-left: 4mm; margin: 0; }
+  .extend {
+    background: #f2f6ef;
+    padding: 2.5mm 3mm;
+    border-radius: 1.5mm;
+  }
+  .prompt {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 9pt;
+    background: #fff;
+    padding: 1.5mm 2mm;
+    border: 0.5pt solid #d4d4d4;
+    border-radius: 1mm;
+    margin: 1mm 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.45;
+  }
+  footer {
+    margin-top: 3mm;
+    padding-top: 2mm;
+    border-top: 0.5pt dotted #aaa;
+    font-size: 8.5pt;
+    color: #888;
+    text-align: center;
+  }
+  @media print {
+    body { width: auto; }
+    .page { padding: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="title-group">
+      <div class="title">{{BOOK_TITLE}}</div>
+      <div class="meta">{{AUTHOR}}｜推荐 {{AGE_RANGE}}｜{{PUBLISHER}}</div>
+    </div>
+    <div class="adapt">适配：{{CHILD_NICKNAME}}·{{CHILD_AGE}}</div>
+  </header>
+
+  <section>
+    <h2>📚 30 秒读懂这本书</h2>
+    <p>{{SUMMARY}}</p>
+  </section>
+
+  <section>
+    <h2>🎯 这次读给 {{CHILD_NICKNAME}}，重点做 3 件事</h2>
+    <ol>
+      <li>{{FOCUS_1}}</li>
+      <li>{{FOCUS_2}}</li>
+      <li>{{FOCUS_3}}</li>
+    </ol>
+  </section>
+
+  <section class="three-read">
+    <h2>🔁 三读法节奏</h2>
+    <div><span class="label">第一读 · 图画漫步</span>{{READ_1}}</div>
+    <div><span class="label">第二读 · PEER 互动</span>{{READ_2}}</div>
+    <div><span class="label">第三读 · 主题延展</span>{{READ_3}}</div>
+  </section>
+
+  <section>
+    <h2>💬 5 个关键提问（由浅入深）</h2>
+    <ol class="q-list">
+      <li><span class="lvl">｜记忆｜</span>{{Q1}}</li>
+      <li><span class="lvl">｜分析｜</span>{{Q2}}</li>
+      <li><span class="lvl">｜视觉｜</span>{{Q3}}</li>
+      <li><span class="lvl">｜联结｜</span>{{Q4}}</li>
+      <li><span class="lvl">｜创造｜</span>{{Q5}}</li>
+    </ol>
+  </section>
+
+  <section class="warn">
+    <h2 style="color:#c75d3b;">⚠️ 这样读反而不好</h2>
+    <ul>
+      <li>{{AVOID_1}}</li>
+      <li>{{AVOID_2}}</li>
+    </ul>
+  </section>
+
+  <section class="extend">
+    <h2 style="color:#3f7036;">🎨 读完一起玩 + AI 生图提示词</h2>
+    <p><strong>延伸活动｜</strong>{{EXTEND_ACTIVITY}}</p>
+    <div class="prompt">中 / {{PROMPT_ZH}}</div>
+    <div class="prompt">EN / {{PROMPT_EN}}</div>
+  </section>
+
+  <footer>生成于 {{DATE}}｜方法论：Dialogic Reading · Chambers · Bloom · 视觉素养 · 三种连接</footer>
+
+</div>
+</body>
+</html>
